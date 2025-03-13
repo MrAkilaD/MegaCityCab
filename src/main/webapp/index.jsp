@@ -6,69 +6,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-y: auto;
+        }
+
+        .page_main_wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Section */
+        .page_header {
+            background: linear-gradient(135deg, #222, #333);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .page_header_sub_wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .company_logo h1 {
+            font-size: 3rem;
+            color: #ff4444;
+        }
+
+        .page_search_bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .pgs_main_wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #333;
+            height: 2.5em;
+            width: 20em;
+            border-radius: 25px;
+            padding: 0 10px;
+        }
+
+        .pgs_main_wrapper input {
+            height: 100%;
+            width: 88%;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            color: #fff;
+            background: transparent;
+        }
+
+        .search_icon img {
+            width: 20px;
+            height: 20px;
+            filter: invert(1);
+        }
+
+        .user_indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user_indicator img {
+            width: 25px;
+            height: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .user_indicator img:hover {
+            transform: scale(1.2);
+        }
+
+        #u_name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .user_indicator a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .user_indicator a:hover {
+            color: #ff4444;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 20px;
+        }
+
+        .header_image {
+            width: 90%;
+            height: 70vh;
+            margin: 20px auto;
+            background-image: url('assert/carousel-2.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Body Section */
+        .page_body {
+            padding: 40px 0;
+        }
+
+        .head_compo1 {
+            width: 90%;
+            margin: 0 auto 20px;
+        }
+
+        .head_compo1 h2 {
+            font-size: 2rem;
+            color: #ff4444;
+        }
+
+        .supplier_item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .p_item {
+            width: 20rem;
+            height: 30rem;
+            background: #222;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .p_item:hover {
+            transform: translateY(-10px);
+        }
+
+        .pheader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .instock_compo p {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .p_img {
+            width: 90%;
+            height: 10rem;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+
+        .p_img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item_name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px;
+            color: #ff4444;
+        }
+
+        .item_price {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 10px;
+        }
+
+        .item_add_cart_flex {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        .item_add_cart {
+            background: #ff4444;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .item_add_cart:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer Section */
+        .page_footer {
+            background: #222;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer_Section {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .footer_main_wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .container_one {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .container_one h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .container_one h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .container_one p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .container_one input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background: #333;
+            color: #fff;
+        }
+
+        .container_one button {
+            background: #ff4444;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .container_one button:hover {
+            transform: translateY(-3px);
+        }
+
+        #footer_copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
     <title>MegaCityCab</title>
 </head>
 
 <body>
     <div class="page_main_wrapper">
-        <div class="t1-header">
-		    <div class="page_header">
-		        <div class="page_header_sub_wrapper">
-		            <div class="company_logo">
-		                <h1>MegaCityCab</h1>
-		            </div>
-		            <div class="page_search_bar">
-		                <div class="pgs_main_wrapper">
-		                    <input type="search" placeholder="Search for anything...." name="" id="">
-		                    <div class="search_icon">
-		                        <img src="assert/search.png" alt="" width="20" height="20" srcset="">
-		                    </div>
-		                </div>
-		            </div>
-		            <div class="user_indicator">
-		                <img src="assert/online-shopping.png" width="25" height="25" alt="" srcset="">
-		                <img src="assert/heart.png" width="25" height="25" alt="" srcset="">
-		                <img src="assert/user.png" width="25" height="25" alt="" srcset="">
-		                <p id="u_name">Ruvidu</p>
-		                <a href="logout.jsp">Logout</a>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="hero">
-		        <div class="s2_user_selection">
-		            <div class="s22_indicator">
-		                <div id="all_12">
-		                    <p>All Category</p>
-		                </div>
-		                <div class="s2_item">
-		                    <img src="assert/tracking.png" width="25" height="25" alt="">
-		                    <p>Track Order</p>
-		                </div>
-		                <div class="s2_item">
-		                    <img src="assert/scale.png" width="25" height="25" alt="">
-		                    <p>Track Order</p>
-		                </div>
-		                <div class="s2_item">
-		                    <img src="assert/customer-service.png" width="25" height="25" alt="">
-		                    <p>Track Order</p>
-		                </div>
-		                <div class="s2_item">
-		                    <img src="assert/help.png" width="25" height="25" alt="">
-		                    <p>Track Order</p>
-		                </div>
-		            </div>
-		            <div class="s2_item">
-		                <img src="assert/telephone.png" width="25" height="25" alt="">
-		                <p>+94112000000</p>
-		            </div>
-		        </div>
-		        <div class="header_image">
-		            
-		        </div>
-		    </div>
-		</div>
+        <!-- Header Section -->
+        <div class="page_header">
+            <div class="page_header_sub_wrapper">
+                <div class="company_logo">
+                    <h1>MegaCityCab</h1>
+                </div>
+                <div class="page_search_bar">
+                    <div class="pgs_main_wrapper">
+                        <input type="search" placeholder="Search for anything...." name="" id="">
+                        <div class="search_icon">
+                            <img src="assert/search.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="user_indicator">
+                    <img src="assert/online-shopping.png" width="25" height="25" alt="">
+                    <img src="assert/heart.png" width="25" height="25" alt="">
+                    <img src="assert/user.png" width="25" height="25" alt="">
+                    <a href="logout.jsp">Logout</a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="header_image"></div>
+        </div>
+
+        <!-- Body Section -->
         <div class="page_body">
             <div class="head_compo1">
                 <h2>Top Vehicles Available</h2>
@@ -93,9 +371,8 @@
                         rs = stmt.executeQuery(query);
 
                         while (rs.next()) {
-                            String model = rs.getString("vehicle_model");                           
+                            String model = rs.getString("vehicle_model");
                             String price = rs.getString("vehicle_rent");
-                         // Convert image BLOB to base64 for display
                             byte[] imgData = rs.getBytes("vehicle_image");
                             String base64Image = "";
                             if (imgData != null) {
@@ -138,55 +415,31 @@
                 %>
             </div>
         </div>
+
+        <!-- Footer Section -->
         <div class="page_footer">
             <div class="footer_Section">
                 <div class="footer_main_wrapper">
                     <div class="container_one">
-                        <h2>Ruvi</h2>
-                        <h3>Subcribe</h3>
+                        <h2>MEGA CITY CAB</h2>
+                        <h3>Subscribe</h3>
                         <p>Get 10% off your first order</p>
-                        <h3>Subcribe</h3>
-                        <p>Get 10% off your first order</p>
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
                     </div>
                     <div class="container_one flexgrow_one">
-                        <h3>Future</h3>
-                        <p>Acchive</p>
-                        <p>Ruvi@gmail.gom</p>
-                        <p>..............</p>
+                        <h3>Contact</h3>
+                        <p>Email: megacitycab@gmail.com</p>
+                        <p>Phone: +94719208046</p>
                     </div>
                     <div class="container_one flexgrow_two">
                         <h3>Account</h3>
                         <p>My Account</p>
                         <p>Login / Register</p>
                         <p>Cart</p>
-                        <p>Wishlist</p>
-                        <p>Shop</p>
-                    </div>
-                    <div class="container_one flexgrow_three">
-                        <h3>Quick Link</h3>
-                        <p>Privacy Policy</p>
-                        <p>Terms of Use</p>
-                        <p>FAQ</p>
-                        <p>Contact</p>
-                    </div>
-                    <div class="container_one flexgrow_four">
-                        <h3>Download App</h3>
-                        <p>save 3% with app new user only</p>
-                        <div class="contact_icon">
-                            <div>
-                                <img src="assert/Untitled 1.png" width="80" height="80" alt="">
-                            </div>
-                            <div>
-                                <img src="assert/GooglePlay.png" alt="" srcset=""><br>
-                                <img src="assert/download-appstore.png" alt="" srcset="">
-                            </div>
-                        </div>
-                        <div>
-                            <img src="assert/Frame 741.png" alt="" srcset="">
-                        </div>
                     </div>
                 </div>
-                <p id="footer_copyright">@ Copyright Rimel 2025. All right reserved</p>
+                <p id="footer_copyright">@ Copyright MegaCityCab 2025. All rights reserved</p>
             </div>
         </div>
     </div>
