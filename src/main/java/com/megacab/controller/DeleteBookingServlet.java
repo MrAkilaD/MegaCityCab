@@ -47,5 +47,3 @@ public class DeleteBookingServlet extends HttpServlet {
         }
     }
 }
-
-   
